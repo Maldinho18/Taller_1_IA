@@ -56,6 +56,27 @@ def breadthFirstSearch(problem: SearchProblem):
     Search the shallowest nodes in the search tree first.
     """
     # TODO: Add your code here
+    inicio= problem.getStartState()
+    if problem.isGoalState(inicio):
+        return []
+    frontera = utils.Queue()
+    frontera.push((inicio, []))
+    explorado = set()
+    explorado.add(inicio)   
+
+    while not frontera.isEmpty():
+
+        estado, acciones = frontera.pop()
+        for succ, accion, costo in problem.getSuccessors(estado):
+
+            if succ not in explorado:
+                if problem.isGoalState(succ):
+                    return acciones + [accion]
+                explorado.add(succ)
+                frontera.push((succ, acciones + [accion]))
+            
+    return []
+
     utils.raiseNotDefined()
 
 
