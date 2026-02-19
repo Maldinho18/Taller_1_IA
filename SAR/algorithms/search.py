@@ -55,7 +55,6 @@ def breadthFirstSearch(problem: SearchProblem):
     """
     Search the shallowest nodes in the search tree first.
     """
-    # TODO: Add your code here
     inicio= problem.getStartState()
     if problem.isGoalState(inicio):
         return []
